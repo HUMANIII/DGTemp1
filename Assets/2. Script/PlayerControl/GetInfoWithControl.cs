@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class GetInfoWithControl : MonoBehaviour
 {
-    [SerializeField] private float _distance = 5f;
+    [SerializeField] private float distance = 5f;
     [SerializeField] private KeyCode Key;
+    [SerializeField] private LayerMask TargetLayer;
     public GameObject[] Targets { get; private set; }
 
     private void Update()
@@ -17,11 +18,17 @@ public class GetInfoWithControl : MonoBehaviour
 
     public void GetObjects()
     {
-        var temp = Physics2D.CircleCastAll(transform.position, _distance, Vector2.zero);
+        var temp = Physics2D.CircleCastAll(transform.position, distance, Vector2.zero, distance, TargetLayer);
         Targets = new GameObject[temp.Length];
         for (int i = 0; i < temp.Length; i++)
         {
             Targets[i] = temp[i].collider.gameObject;
         }
+#if UNITY_EDITOR
+        foreach (var target in Targets)
+        {
+            Debug.Log(target.name);
+        }
+#endif
     }
 }
