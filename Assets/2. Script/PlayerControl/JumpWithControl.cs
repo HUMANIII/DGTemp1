@@ -18,7 +18,7 @@ public class JumpWithControl : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            rb.AddForceY(jumpForce);
         }
     }
 }
