@@ -116,7 +116,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &-1809824225140441251
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -178,4 +178,5 @@ MonoBehaviour:
   rb: {fileID: -1190693265094060214}
   target: {fileID: 0}
   distance: 5
+  stopDistance: 2.5
   MoveSpeed: 3
