@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     {
         EndTime = Time.time;
     }
-    public void GetName(string name)
+    public void SetName(string name)
     {
         PlayerName = name;
         DebugPanel.LogMessage("PlayerName : " + PlayerName);
