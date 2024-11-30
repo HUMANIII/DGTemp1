@@ -13,14 +13,14 @@ public class DebugPanel : MonoBehaviour
     private StringBuilder sb = new();
 
     private void Awake()
-    {
-        strings = new string[MaxLine];
+    {        
         if(instance != null)
         {
             Destroy(gameObject);
             return;
         }
         instance = this;
+        strings = new string[MaxLine];
         DontDestroyOnLoad(gameObject);
     }
 

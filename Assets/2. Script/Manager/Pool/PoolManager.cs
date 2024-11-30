@@ -12,10 +12,7 @@ public class PoolManager : MonoBehaviour
     {
         get
         {
-            if (instance == null)
-            {
-                instance = FindFirstObjectByType<PoolManager>();
-            }
+            instance ??= FindFirstObjectByType<PoolManager>();
             return instance;
         }
     }
@@ -28,7 +25,6 @@ public class PoolManager : MonoBehaviour
             return;
         }
         instance = this;
-        DontDestroyOnLoad(gameObject);
 
         for (int i = 0; i < InitCount; i++)
         {
@@ -53,6 +49,7 @@ public class PoolManager : MonoBehaviour
     public void Release(PoolableObj obj)
     {
         obj.OnRelease();
+        pool.Enqueue(obj);
     }
 
     private void AddObject()
