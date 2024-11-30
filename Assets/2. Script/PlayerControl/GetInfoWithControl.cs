@@ -7,11 +7,21 @@ public class GetInfoWithControl : MonoBehaviour
     [SerializeField] private LayerMask TargetLayer;
     public GameObject[] Targets { get; private set; }
 
+    private void OnEnable()
+    {
+        EventManager.Instance.OnClickTab += GetObjects;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.Instance.OnClickTab -= GetObjects;
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(Key))
         {
-            GetObjects();
+            EventManager.Instance.ClickTab();
         }
     }
 
