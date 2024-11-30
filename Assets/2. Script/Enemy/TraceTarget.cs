@@ -4,13 +4,9 @@ using UnityEngine;
 public class TraceTarget : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
-    [Header("���� ���")]
     [SerializeField] private GameObject target;
-    [Header("���� ���� ����")]
     [SerializeField] private float distance = 5f;
-    [Header("���� ���� �Ÿ�")]
     [SerializeField] private float stopDistance = 1f;
-    [Header("�̵� �ӵ�")]
     [SerializeField] private float MoveSpeed;
 
     private void Awake()
