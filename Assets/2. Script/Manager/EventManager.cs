@@ -1,7 +1,16 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class EventManager
+namespace Event
+{
+    public enum EventType
+    {
+        OnClickTab,
+    }
+}
+    public class EventManager
 {
     private static EventManager instance;
     public static EventManager Instance
@@ -13,10 +22,31 @@ public class EventManager
         }
     }
 
-    public event Action OnClickTab;
+    private Dictionary<Event.EventType, Action> EventDic = new();
 
-    public void ClickTab()
+    public void AddEvent(Event.EventType eventType, Action action)
     {
-        OnClickTab?.Invoke();
+        if (EventDic.ContainsKey(eventType))
+        {
+            EventDic[eventType] += action;
+        }
+        else
+        {
+            EventDic.Add(eventType, action);
+        }
+    }
+
+    public void RemoveEvent(Event.EventType eventType, Action action)
+    {
+        if (EventDic.ContainsKey(eventType))
+        {
+            EventDic[eventType] -= action;
+        }
+    }
+
+
+    public void DoEvent(Event.EventType eventType)
+    {
+        EventDic[eventType]?.Invoke();
     }
 }
