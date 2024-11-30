@@ -18,7 +18,7 @@ public class JumpWithControl : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb.AddForceY(jumpForce);
+            rb.AddForceY(jumpForce, ForceMode2D.Impulse);
         }
     }
 }
