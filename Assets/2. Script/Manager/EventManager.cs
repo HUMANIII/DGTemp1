@@ -3,26 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-    public class EventManager
+public static class EventManager
 {
     public enum EventType
     {
         OnClickTab,
     }
 
-    private static EventManager instance;
-    public static EventManager Instance
-    {
-        get
-        {
-            instance ??= new EventManager();
-            return instance;
-        }
-    }
+    private static Dictionary<EventType, Action> EventDic = new();
 
-    private Dictionary<EventType, Action> EventDic = new();
-
-    public void AddEvent(EventType eventType, Action action)
+    public static void AddEvent(EventType eventType, Action action)
     {
         if (EventDic.ContainsKey(eventType))
         {
@@ -34,7 +24,7 @@ using UnityEngine;
         }
     }
 
-    public void RemoveEvent(EventType eventType, Action action)
+    public static void RemoveEvent(EventType eventType, Action action)
     {
         if (EventDic.ContainsKey(eventType))
         {
@@ -43,7 +33,7 @@ using UnityEngine;
     }
 
 
-    public void DoEvent(EventType eventType)
+    public static void DoEvent(EventType eventType)
     {
         EventDic[eventType]?.Invoke();
     }
