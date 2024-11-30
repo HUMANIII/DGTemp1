@@ -37,8 +37,10 @@ public class GetInfoWithControl : MonoBehaviour
 
         foreach (var target in Targets)
         {
-            target.TryGetComponent(out PoolableObj poolableObj);
-            PoolManager.Instance.Release(poolableObj);
+            if(!target.TryGetComponent(out IDestructable destuctable))
+                continue;
+
+            destuctable.OnDestruct();
         }
 #if UNITY_EDITOR
         Debug.Log("GetObjResult");

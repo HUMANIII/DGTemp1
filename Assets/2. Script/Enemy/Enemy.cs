@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy : PoolableObj
+public class Enemy : PoolableObj, IDestructable
 {
     protected override void OnGetAction()
     {
@@ -8,5 +8,10 @@ public class Enemy : PoolableObj
 
     protected override void OnReleaseAction()
     {
+    }
+
+    public void OnDestruct()
+    {
+        PoolManager.Instance.Release(this);
     }
 }
