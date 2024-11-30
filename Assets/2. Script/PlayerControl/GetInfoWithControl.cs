@@ -9,19 +9,19 @@ public class GetInfoWithControl : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.Instance.AddEvent(Event.EventType.OnClickTab, GetObjects);
+        EventManager.Instance.AddEvent(EventManager.EventType.OnClickTab, GetObjects);
     }
 
     private void OnDisable()
     {
-        EventManager.Instance.RemoveEvent(Event.EventType.OnClickTab, GetObjects);
+        EventManager.Instance.RemoveEvent(EventManager.EventType.OnClickTab, GetObjects);
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(Key))
         {
-            EventManager.Instance.DoEvent(Event.EventType.OnClickTab);
+            EventManager.Instance.DoEvent(EventManager.EventType.OnClickTab);
         }
     }
 
