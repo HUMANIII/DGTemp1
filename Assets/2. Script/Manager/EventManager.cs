@@ -8,6 +8,8 @@ public static class EventManager
     public enum EventType
     {
         OnClickTab,
+        OnStartGame,
+        OnEndGame,
     }
 
     private static Dictionary<EventType, Action> EventDic = new();
@@ -35,6 +37,7 @@ public static class EventManager
 
     public static void DoEvent(EventType eventType)
     {
+        DebugPanel.LogMessage($"DoEvent : {eventType}");
         EventDic[eventType]?.Invoke();
     }
 }
