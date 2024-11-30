@@ -24,6 +24,12 @@ public class GetInfoWithControl : MonoBehaviour
         {
             Targets[i] = temp[i].collider.gameObject;
         }
+
+        foreach (var target in Targets)
+        {
+            target.TryGetComponent(out PoolableObj poolableObj);
+            PoolManager.Instance.Release(poolableObj);
+        }
 #if UNITY_EDITOR
         Debug.Log("GetObjResult");
         DebugPanel.LogMessage("GetObjResult");
