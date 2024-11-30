@@ -25,10 +25,15 @@ public class GetInfoWithControl : MonoBehaviour
             Targets[i] = temp[i].collider.gameObject;
         }
 #if UNITY_EDITOR
+        Debug.Log("GetObjResult");
+        DebugPanel.LogMessage("GetObjResult");
         foreach (var target in Targets)
         {
             Debug.Log(target.name);
+            DebugPanel.LogMessage(target.name);
         }
+        Debug.Log("");
+        DebugPanel.LogMessage("");
 #endif
     }
 }
